@@ -1,0 +1,27 @@
+version: '3'
+services:
+
+  # DJANGO
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: python:3.7.6-alpine3.10
+    container_name: django
+    restart: unless-stopped
+    tty: true
+    working_dir: /code
+    volumes:
+      - ./:/code
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
+  redis:
+    driver: local
