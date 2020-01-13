@@ -1,4 +1,5 @@
 version: '3'
+
 services:
 
   # DJANGO
@@ -17,9 +18,37 @@ services:
     networks:
       - app-network
 
+  #REDIS
+  redis:
+    image: redis:5.0.7
+    container_name: redisDjango
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - redis:/data
+    networks:
+      - app-network
+
+  #POSTGRES
+  postgres:
+    image: postgres:12.1-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: hola123
+      POSTGRES_USER: django
+      POSTGRES_DB: djangodb
+    tty: true
+    ports:
+      - "54320:5432"
+
+#CONFIGURATION
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  dbdata:
+  redis:
 
 volumes:
   dbdata:
