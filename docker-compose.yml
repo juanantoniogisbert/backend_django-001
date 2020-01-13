@@ -32,6 +32,7 @@ services:
   #POSTGRES
   postgres:
     image: postgres:12.1-alpine
+    container_name: postgresdjango
     restart: always
     environment:
       POSTGRES_PASSWORD: hola123
@@ -40,6 +41,8 @@ services:
     tty: true
     ports:
       - "54320:5432"
+    networks:
+      - app-network
 
 #CONFIGURATION
 networks:
