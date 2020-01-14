@@ -22,7 +22,6 @@ services:
   redis:
     image: redis:5.0.7
     container_name: redisDjango
-    restart: unless-stopped
     tty: true
     volumes:
       - redis:/data
