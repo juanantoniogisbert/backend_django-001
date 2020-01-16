@@ -1,7 +1,11 @@
-from django.urls import path
+from django.conf.urls import url, include
+from rest_framework.routers import DefaultRouter
+from .views import HotelViewSetAdmin, HotelViewSet
 
-from . import views
+router = DefaultRouter()
+router.register(r'hotels', HotelViewSet)
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    url(r'', include(router.urls)),
+
 ]
