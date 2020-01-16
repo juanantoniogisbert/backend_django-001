@@ -1,5 +1,7 @@
 from django.db import models
 
+from core.models import TimestampedModel
+
 
 class Client(models.Model):
     name = models.CharField(max_length=255)
