@@ -3,3 +3,4 @@ __pycache__/
 env/
 hotel/migrations
 *.sqlite3
+*.log

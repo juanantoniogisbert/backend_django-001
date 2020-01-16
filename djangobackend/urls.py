@@ -23,7 +23,8 @@ urlpatterns = [
 
     url(r'api-auth/', include('rest_framework.urls')),
     path('hotels/', include('hotel.urls')),
-    # url(r'hotels/', include('apis.urls')),
+    path('clients/', include('clients.urls'))
 
 ]
+
 
