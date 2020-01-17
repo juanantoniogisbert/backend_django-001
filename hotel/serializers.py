@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from clients.serializers import ClientSerializer
 from hotel.models import Hotel, Comment
 
 
@@ -10,7 +11,7 @@ class HotelSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    # author = ProfileSerializer(required=False)
+    # client = ClientSerializer(required=False)
 
     createdAt = serializers.SerializerMethodField(method_name='get_created_at')
     updatedAt = serializers.SerializerMethodField(method_name='get_updated_at')
@@ -19,7 +20,7 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = (
             'id',
-            # 'author',
+            # 'client',
             'body',
             'createdAt',
             'updatedAt',
@@ -27,11 +28,11 @@ class CommentSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         hotel = self.context['hotel']
-        # author = self.context['author']
+        # client = self.context['client']
 
         return Comment.objects.create(
-            # author=author, article=article, **validated_data
             hotel=hotel, **validated_data
+            # hotel=hotel, **validated_data
         )
 
 
