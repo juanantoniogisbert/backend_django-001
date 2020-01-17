@@ -23,3 +23,6 @@ class Comment(TimestampedModel):
     clients = models.ForeignKey(
         Client, related_name='comments', on_delete=models.CASCADE
     )
+
+    def __str__(self):
+        return self.created_at

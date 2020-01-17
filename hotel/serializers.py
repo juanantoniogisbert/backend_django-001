@@ -34,6 +34,7 @@ class CommentSerializer(serializers.ModelSerializer):
             hotel=hotel, **validated_data
         )
 
+
     def get_created_at(self, instance):
         return instance.created_at.isoformat()
 
