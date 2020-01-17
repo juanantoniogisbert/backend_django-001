@@ -1,5 +1,6 @@
 from django.db import models
 
+from clients.models import Client
 from core.models import TimestampedModel
 
 
@@ -11,13 +12,14 @@ class Hotel(models.Model):
     def __str__(self):
         return self.name
 
-    class Comment(TimestampedModel):
-        body = models.TextField()
 
-        hotels = models.ForeignKey(
-            'hotels.Hotel', related_name='comments', on_delete=models.CASCADE
-        )
+class Comment(TimestampedModel):
+    body = models.TextField()
 
-        clients = models.ForeignKey(
-            'clients.Client', related_name='comments', on_delete=models.CASCADE
-        )
+    hotels = models.ForeignKey(
+        Hotel, related_name='comments', on_delete=models.CASCADE
+    )
+
+    clients = models.ForeignKey(
+        Client, related_name='comments', on_delete=models.CASCADE
+    )
