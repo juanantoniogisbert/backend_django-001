@@ -19,6 +19,7 @@ class HotelViewSetAdmin(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     permission_classes = (IsAdminUser,)
 
+
 class CommentViewSetAdmin(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
