@@ -1,7 +1,5 @@
 from django.db import models
 
-from core.models import TimestampedModel
-
 
 class Hotel(models.Model):
     name = models.CharField(max_length=255)
@@ -11,13 +9,9 @@ class Hotel(models.Model):
     def __str__(self):
         return self.name
 
-    class Comment(TimestampedModel):
-        body = models.TextField()
 
-        hotels = models.ForeignKey(
-            'hotels.Hotel', related_name='comments', on_delete=models.CASCADE
-        )
+class Comment(models.Model):
+    comment = models.CharField(max_length=255)
 
-        clients = models.ForeignKey(
-            'clients.Client', related_name='comments', on_delete=models.CASCADE
-        )
+    def __str__(self):
+        return self.comment
