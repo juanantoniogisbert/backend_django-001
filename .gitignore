@@ -1,6 +1,6 @@
 __pycache__/
 .idea/
 env/
-hotel/migrations
+migrations/*
 *.sqlite3
 *.log
