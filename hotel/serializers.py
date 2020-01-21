@@ -11,7 +11,8 @@ class HotelSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    # client = ClientSerializer(required=False)
+    clients = ClientSerializer(required=False)
+    hotels = HotelSerializer(required=False)
 
     createdAt = serializers.SerializerMethodField(method_name='get_created_at')
     updatedAt = serializers.SerializerMethodField(method_name='get_updated_at')
@@ -20,7 +21,8 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = (
             'id',
-            # 'client',
+            'hotels',
+            'clients',
             'body',
             'createdAt',
             'updatedAt',
