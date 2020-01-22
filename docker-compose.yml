@@ -38,6 +38,8 @@ services:
       POSTGRES_USER: django
       POSTGRES_DB: djangodb
     tty: true
+    volumes:
+      - dbdata:/var/lib/postgresql/data
     ports:
       - "54320:5432"
     networks:
