@@ -4,15 +4,15 @@ from clients.serializers import ClientSerializer
 from hotel.models import Hotel, Comment
 
 
-class HotelSerializer(serializers.HyperlinkedModelSerializer):
+class HotelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hotel
         fields = ['name', 'stars', 'location']
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    clients = ClientSerializer(required=False)
-    hotels = HotelSerializer(required=False)
+    # clients = ClientSerializer(required=True)
+    # hotels = HotelSerializer(many=True, read_only=True)
 
     createdAt = serializers.SerializerMethodField(method_name='get_created_at')
     updatedAt = serializers.SerializerMethodField(method_name='get_updated_at')
@@ -25,8 +25,11 @@ class CommentSerializer(serializers.ModelSerializer):
             'clients',
             'body',
             'createdAt',
-            'updatedAt',
+            'updatedAt'
         )
+
+        depth = 1
+        extra_kwargs = {'body':{'read_only: True'}}
 
     def create(self, validated_data):
         hotel = self.context['hotel']
