@@ -29,7 +29,7 @@ class CommentSerializer(serializers.ModelSerializer):
         )
 
         depth = 1
-        extra_kwargs = {'body':{'read_only: True'}}
+        extra_kwargs = {'body':{'read_only': True}}
 
     def create(self, validated_data):
         hotel = self.context['hotel']
