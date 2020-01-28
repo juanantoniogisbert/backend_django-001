@@ -7,7 +7,7 @@ from hotel.models import Hotel, Comment
 class HotelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hotel
-        fields = ['name', 'stars', 'location']
+        fields = ['id', 'name', 'stars', 'location']
 
 
 class CommentSerializer(serializers.ModelSerializer):

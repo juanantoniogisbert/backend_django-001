@@ -167,7 +167,7 @@ LOGGING = {
 }
 
 CORS_ORIGIN_WHITELIST = [
-    "https://0.0.0.0:8000",
-    "http://localhost:8080",
-    "http://127.0.0.1:9000"
+    "http://0.0.0.0:3000",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
 ]
