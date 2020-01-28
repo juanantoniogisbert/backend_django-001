@@ -94,6 +94,10 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ]
 }
 
@@ -135,15 +139,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}
-
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -166,8 +161,10 @@ LOGGING = {
     },
 }
 
+
 CORS_ORIGIN_WHITELIST = [
     "http://0.0.0.0:3000",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "http://localhost",
 ]
