@@ -3,7 +3,7 @@ import json
 from rest_framework.renderers import JSONRenderer
 
 
-class ConduitJSONRenderer(JSONRenderer):
+class JEIJSONRenderer(JSONRenderer):
     charset = 'utf-8'
     object_label = 'object'
     pagination_object_label = 'objects'
@@ -21,7 +21,7 @@ class ConduitJSONRenderer(JSONRenderer):
         # the default JSONRenderer to handle rendering errors, so we need to
         # check for this case.
         elif data.get('errors', None) is not None:
-            return super(ConduitJSONRenderer, self).render(data)
+            return super(JEIJSONRenderer, self).render(data)
 
         else:
             return json.dumps({

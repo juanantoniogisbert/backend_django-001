@@ -1,7 +1,7 @@
-from core.renderers import ConduitJSONRenderer
+from core.renderers import JEIJSONRenderer
 
 
-class UserJSONRenderer(ConduitJSONRenderer):
+class UserJSONRenderer(JEIJSONRenderer):
     charset = 'utf-8'
     object_label = 'user'
     pagination_object_label = 'users'

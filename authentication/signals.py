@@ -1,7 +1,7 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from conduit.apps.profiles.models import Profile
+from profiles.models import Profile
 
 from .models import User
 

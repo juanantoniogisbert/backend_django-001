@@ -7,7 +7,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: django
+    container_name: djangoTEST
     # restart: unless-stopped
     tty: true
     working_dir: /code
@@ -21,25 +21,25 @@ services:
   #REDIS
   redis:
     image: redis:5.0.7
-    container_name: redisDjango
+    container_name: redisDjangoTEST
     tty: true
     volumes:
-      - redis:/data
+      - redistest:/data
     networks:
       - app-network
 
   #POSTGRES
   postgres:
     image: postgres:12.1-alpine
-    container_name: postgresdjango
+    container_name: postgresdjangoTEST
     restart: always
     environment:
       POSTGRES_PASSWORD: hola123
       POSTGRES_USER: django
-      POSTGRES_DB: djangodb
+      POSTGRES_DB: test_drf
     tty: true
     volumes:
-      - dbdata:/var/lib/postgresql/data
+      - dbdatatest:/var/lib/postgresql/data
     ports:
       - "54320:5432"
     networks:
@@ -51,11 +51,11 @@ networks:
     driver: bridge
 
 volumes:
-  dbdata:
-  redis:
+  dbdatatest:
+  redistest:
 
 volumes:
-  dbdata:
+  dbdatatest:
     driver: local
-  redis:
+  redistest:
     driver: local

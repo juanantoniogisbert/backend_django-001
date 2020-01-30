@@ -31,9 +31,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'hotel.apps.HotelConfig',
-    'clients.apps.ClientsConfig',
-    'authentication.apps.AuthenticationConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +40,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'django_extensions',
+
+    'hotel.apps.HotelConfig',
+    'clients.apps.ClientsConfig',
+    'authentication.apps.AuthenticationConfig',
+    'profiles.apps.ProfileConfig',
+    'core.apps.CoreConfig',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +86,7 @@ WSGI_APPLICATION = 'djangobackend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql', 
-        'NAME': 'djangodb',
+        'NAME': 'test_drf',
         'USER': 'django',
         'PASSWORD': 'hola123',
         'HOST': 'postgresdjango',
