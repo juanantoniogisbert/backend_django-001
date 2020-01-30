@@ -41,11 +41,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_extensions',
 
-    'hotel.apps.HotelConfig',
     'clients.apps.ClientsConfig',
+    'hotel.apps.HotelConfig',
     'authentication.apps.AuthenticationConfig',
-    'profiles.apps.ProfileConfig',
     'core.apps.CoreConfig',
+    'profiles.apps.ProfileConfig',
 ]
 
 MIDDLEWARE = [
@@ -86,13 +86,15 @@ WSGI_APPLICATION = 'djangobackend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql', 
-        'NAME': 'test_drf',
+        'NAME': 'djangodb',
         'USER': 'django',
         'PASSWORD': 'hola123',
         'HOST': 'postgresdjango',
         'PORT': '5432',
     }
 }
+
+AUTH_USER_MODEL = 'authentication.User'
 
 REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'core.exceptions.core_exception_handler',
