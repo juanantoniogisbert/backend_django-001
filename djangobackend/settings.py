@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'django_extensions',
+    'faker',
 
     'clients.apps.ClientsConfig',
     'hotel.apps.HotelConfig',

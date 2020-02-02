@@ -4,3 +4,4 @@ djangorestframework==3.11.0
 django-cors-headers==3.2.1
 pyjwt==1.7.1
 django-extensions==2.2.6
+faker==4.0.0
