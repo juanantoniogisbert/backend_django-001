@@ -10,7 +10,7 @@ from hotel.serializers import HotelSerializer, CommentSerializer
 class HotelViewSet(viewsets.ModelViewSet):
     queryset = models.Hotel.objects.all()
     serializer_class = HotelSerializer
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
 
 # Admin
