@@ -1,0 +1,5 @@
+sudo docker exec -it django bash
+
+python manage.py shell
+
+exec(open('dbSeed/dbHotelSeed.py').read())
