@@ -34,3 +34,35 @@ class ProfileSerializer(serializers.ModelSerializer):
         followee = instance
 
         return follower.is_following(followee)
+
+
+class ProfileSerializerMini(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username')
+    image = serializers.SerializerMethodField()
+    following = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Profile
+        fields = ('username', 'image', 'following',)
+        read_only_fields = ('username',)
+
+    def get_image(self, obj):
+        if obj.image:
+            return obj.image
+
+        return 'https://static.productionready.io/images/smiley-cyrus.jpg'
+
+    def get_following(self, instance):
+        request = self.context.get('request', None)
+
+        if request is None:
+            return False
+
+        # if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
+            return False
+
+        follower = request.user.profile
+        followee = instance
+
+        return follower.is_following(followee)
