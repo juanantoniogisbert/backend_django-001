@@ -30,7 +30,7 @@ class HotelViewSet(mixins.ListModelMixin,
     serializer_class = HotelSerializer
 
 
-class CommentsListCreateAPIView(generics.ListAPIView):
+class CommentsListAPIView(generics.ListAPIView):
     lookup_field = 'comment__hotel'
     lookup_url_kwarg = 'hotel_id'
     serializer_class = CommentSerializer
