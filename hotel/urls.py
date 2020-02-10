@@ -1,12 +1,15 @@
 from django.conf.urls import url, include
 from rest_framework.routers import DefaultRouter
-from .views import HotelViewSetAdmin, HotelViewSet, CommentViewSetAdmin
+
+from .views import HotelViewSetAdmin, CommentViewSetAdmin, HotelViewSet, CommentsListCreateAPIView
 
 router = DefaultRouter()
-router.register(r'hotels', HotelViewSet)
+router.register(r'hotels_Admin', HotelViewSetAdmin)
 router.register(r'comments_Admin', CommentViewSetAdmin)
 
-urlpatterns = [
-    url(r'', include(router.urls)),
+router.register('', HotelViewSet)
 
+urlpatterns = [
+    url('', include(router.urls)),
+    url(r'^(?P<hotel_id>[0-9a-zA-Z_-]+)/comments', CommentsListCreateAPIView.as_view()),
 ]

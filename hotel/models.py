@@ -1,7 +1,7 @@
 from django.db import models
 
-from clients.models import Client
 from core.models import TimestampedModel
+from profiles.models import Profile
 
 
 class Hotel(models.Model):
@@ -20,8 +20,8 @@ class Comment(TimestampedModel):
         Hotel, related_name='comments', on_delete=models.CASCADE
     )
 
-    clients = models.ForeignKey(
-        Client, related_name='comments', on_delete=models.CASCADE
+    profile = models.ForeignKey(
+        Profile, related_name='comments', on_delete=models.CASCADE
     )
 
     def __str__(self):

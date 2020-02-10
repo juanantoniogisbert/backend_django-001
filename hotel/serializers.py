@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from clients.serializers import ClientSerializer
 from hotel.models import Hotel, Comment
+from profiles.serializers import ProfileSerializer, ProfileSerializerMini
 
 
 class HotelSerializer(serializers.ModelSerializer):
@@ -11,8 +12,8 @@ class HotelSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    # clients = ClientSerializer(required=True)
-    # hotels = HotelSerializer(many=True, read_only=True)
+    profile = ProfileSerializerMini(read_only=True)
+    # hotels = HotelSerializer(many=False, read_only=True)
 
     createdAt = serializers.SerializerMethodField(method_name='get_created_at')
     updatedAt = serializers.SerializerMethodField(method_name='get_updated_at')
@@ -22,13 +23,13 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'hotels',
-            'clients',
+            'profile',
             'body',
             'createdAt',
             'updatedAt'
         )
 
-        depth = 1
+        # depth = 2
         extra_kwargs = {'body':{'read_only': True}}
 
     def create(self, validated_data):
