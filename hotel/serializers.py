@@ -13,7 +13,7 @@ class HotelSerializer(serializers.ModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
     profile = ProfileSerializerMini(read_only=True)
-    # hotels = HotelSerializer(many=False, read_only=True)
+    hotels = HotelSerializer(many=False, read_only=True)
 
     createdAt = serializers.SerializerMethodField(method_name='get_created_at')
     updatedAt = serializers.SerializerMethodField(method_name='get_updated_at')
@@ -33,12 +33,12 @@ class CommentSerializer(serializers.ModelSerializer):
         extra_kwargs = {'body':{'read_only': True}}
 
     def create(self, validated_data):
-        hotel = self.context['hotel']
-        # client = self.context['client']
+        hotels = self.context['hotels']
+        profile = self.context['profile']
 
         return Comment.objects.create(
-            hotel=hotel, **validated_data
-            # hotel=hotel, **validated_data
+            hotels=hotels, **validated_data,
+            profile=profile, **validated_data
         )
 
 
