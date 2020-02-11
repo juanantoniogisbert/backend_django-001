@@ -54,5 +54,7 @@ class CommentsListAPIView(generics.ListCreateAPIView):
             
         serializer = self.serializer_class(data=data, context=context)
         serializer.is_valid(raise_exception=True)
-        serializer.save()
+        hotelModel = serializer.save()
+        hotelModel.body = data['body']
+        hotelModel.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)

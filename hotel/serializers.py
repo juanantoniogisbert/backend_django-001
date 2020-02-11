@@ -14,6 +14,7 @@ class HotelSerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     profile = ProfileSerializerMini(read_only=True)
     hotels = HotelSerializer(many=False, read_only=True)
+    body = serializers.CharField(max_length=255, read_only=True)
 
     createdAt = serializers.SerializerMethodField(method_name='get_created_at')
     updatedAt = serializers.SerializerMethodField(method_name='get_updated_at')
