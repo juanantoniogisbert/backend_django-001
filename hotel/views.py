@@ -42,17 +42,16 @@ class CommentsListAPIView(generics.ListCreateAPIView):
         idToFilter = self.kwargs[self.lookup_url_kwarg]
         return queryset.filter(hotels=idToFilter)
 
-    def create(self, request):
-        serializer_context = {
-            'author': request.user.profile,
-            'request': request
-        }
+    def create(self, request, hotel_id=None):
+        data = request.data.get('comment', {})
+        context = {'author': request.user.profile}
 
-        serializer_data = request.data.get('post', {})
-        serializer = self.serializer_class(
-            data=serializer_data, context=serializer_context
-        )
-        
+        try:
+            context['post'] = Post.objects.get(slug=post_slug)
+        except Post.DoesNotExist:
+            raise NotFound('An post with this slug does not exist.')
+            
+        serializer = self.serializer_class(data=data, context=context)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
