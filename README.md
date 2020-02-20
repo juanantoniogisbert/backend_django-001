@@ -1,5 +1,9 @@
 # DJANGO BACKEND 
 
+- [Juanan](https://github.com/juanantoniogisbert)
+- [Alejandro](https://github.com/ALEJ4NDRO29/)
+
+
 ## Requisitos
 - [Docker](https://docs.docker.com/install/)
 - [Docker-compose](https://docs.docker.com/compose/install/)
