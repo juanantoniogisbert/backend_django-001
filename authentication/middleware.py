@@ -25,6 +25,8 @@ class CustomAuthentication(authentication.BaseAuthentication):
 
         token = splittedAuth[1]
 
+        print(token)
+
         return self.authenticate_credentials(request, token)
 
     def authenticate_credentials(self, request, token):
