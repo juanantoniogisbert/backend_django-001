@@ -9,7 +9,7 @@
 - [Docker-compose](https://docs.docker.com/compose/install/)
 
 ## Instalación
-    git clone https://github.com/juanantoniogisbert/vue_frontend-001.git
+    git clone https://github.com/juanantoniogisbert/backend_django-001.git
 
     cd vue_frontend-001
 
